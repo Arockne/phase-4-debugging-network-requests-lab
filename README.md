@@ -63,11 +63,14 @@ developing your own process.
 - Add a new toy when the toy form is submitted
 
   - How I debugged:
+    Using the Network tab in chrome dev tools, I made a request throught the new toy form. In doing so, the response resulted in a 500 server, meaning there is some kind of error on the server side. So checking the server logs I notice that a NameError was raised, which showed where the error was located and what raised the error. The error itself was a typo on line 10 being Toys instead of Toy, which fixed this bug.
 
 - Update the number of likes for a toy
 
   - How I debugged:
+  When clicking the like button on a toy card, using Network tab, I notice within the headers that there was a status code of 204, meaning no content. What that means is that the response from the server is not rendering any JSON data back to the client. How I fixed this is by using the render method and passing in the toy that was updated with a like.
 
 - Donate a toy to Goodwill (and delete it from our database)
 
   - How I debugged:
+  When clicking the "Donate to GoodWill" button, the Network tab showed a 404 no_content status. Has a possble two meanings, either the id is not located within the database or the route does not exist. I first checked if the logic within the controller was correct, then I checked to see if the route actually existed within the routes. How I fixed this bug was by implementing the route that did not exist.
